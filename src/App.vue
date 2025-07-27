@@ -26,6 +26,9 @@
       <p>スイカを割りました！</p>
       <button @click="resetGame">もう一度プレイ</button>
     </div>
+    <footer class="app-footer">
+      <p>&copy; 2025 isawyouvented. All rights reserved.</p>
+    </footer>
   </div>
 </template>
 
@@ -167,5 +170,16 @@ button {
   font-size: 1em;
   cursor: pointer;
   margin-top: 10px;
+}
+
+/* フッター */
+.app-footer {
+  background-color: #5a3c73;
+  color: #f5f5f5; /* 白に近い色 */
+  padding: 20px 0; /* パディングを増やす */
+  margin-top: auto;
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15); /* 影を強調 */
+  font-size: 0.9em;
+  letter-spacing: 0.5px; /* 文字間隔を調整 */
 }
 </style>

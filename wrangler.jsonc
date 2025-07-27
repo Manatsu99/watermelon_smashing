@@ -1,47 +1,29 @@
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
+// wrangler.jsonc
+
 {
-	// "$schema": "node_modules/wrangler/config-schema.json",
-	"name": "watermelon",
-	"main": "src/App.vue",
-	"compatibility_date": "2025-07-26",
-	"observability": {
-		"enabled": true
-	}
-	/**
-	 * Smart Placement
-	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
-	 */
-	// "placement": { "mode": "smart" },
+  "name": "watermelon", // あなたのプロジェクト名
 
-	/**
-	 * Bindings
-	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
-	 * databases, object storage, AI inference, real-time communication and more.
-	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
-	 */
+  // サイトのアセット（静的ファイル）をデプロイする場合、
+  // "main" フィールドは基本的に不要です。
+  // "main": "src/main.ts", // この行はコメントアウトまたは削除したままにしてください
 
-	/**
-	 * Environment Variables
-	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
-	 */
-	// "vars": { "MY_VARIABLE": "production_value" },
-	/**
-	 * Note: Use secrets to store sensitive data.
-	 * https://developers.cloudflare.com/workers/configuration/secrets/
-	 */
+  // "site" オブジェクトは、Workers Sites のための古い形式です。
+  // 新しいWranglerと静的サイトの連携には "assets" を使います。
+  // "site": {
+  //   "bucket": "./dist",
+  //   "entry-point": "./",
+  //   "usage_model": "standard",
+  //   "do_not_serve_source_maps": true
+  // },
 
-	/**
-	 * Static Assets
-	 * https://developers.cloudflare.com/workers/static-assets/binding/
-	 */
-	// "assets": { "directory": "./public/", "binding": "ASSETS" },
+  // ★★★ これが重要です：サイトのアセットを定義するための新しい形式 ★★★
+  "assets": {
+    "directory": "./dist" // Viteでビルドされた成果物が入るディレクトリ
+  },
 
-	/**
-	 * Service Bindings (communicate between multiple Workers)
-	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
-	 */
-	// "services": [{ "binding": "MY_SERVICE", "service": "my-service" }]
+  // 以下の設定は必要に応じて残すか削除してください
+  // "observability": {
+  //   "enabled": true
+  // },
+  "compatibility_date": "2025-07-27" // 今日付を設定
 }

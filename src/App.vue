@@ -26,6 +26,7 @@
       <p>スイカを割りました！</p>
       <button @click="resetGame">もう一度プレイ</button>
     </div>
+
     <footer class="app-footer">
       <p>&copy; 2025 isawyouvented. All rights reserved.</p>
     </footer>
@@ -125,14 +126,19 @@ onUnmounted(() => {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: #f5f5f5;
+
+  /* ★★★ フッター固定のための最低限のFlexbox設定 ★★★ */
+  min-height: 100vh; /* 画面の高さいっぱいまでアプリ領域を広げる */
+  display: flex; /* アプリ全体をFlexコンテナにする */
+  flex-direction: column; /* 子要素を縦方向に並べる */
+  /* justify-content: space-between; は不要、代わりにフッターに margin-top: auto を使う */
 }
 
 .game-board {
   display: flex;
   flex-direction: column-reverse; /* Y軸を上方向にするため */
-  border: 1px solid #ccc;
+  border: 1px solid #705cb8;
   width: fit-content;
   margin: 20px auto;
 }
@@ -144,7 +150,7 @@ onUnmounted(() => {
 .cell {
   width: 30px;
   height: 30px;
-  border: 1px solid #eee;
+  border: 1px solid #705cb8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,32 +158,31 @@ onUnmounted(() => {
 }
 
 .player {
-  background-color: #add8e6; /* 薄い水色 */
+  background-color: #a08df0; /* 薄い水色 */
 }
 
 /* .watermelon { */
-  /*background-color: #f08080;*/ /* 薄い赤 */
+/* background-color: #f08080;*/ /* 薄い赤 */
 /*} */
 
 .game-over {
   margin-top: 20px;
   font-size: 1.5em;
-  color: green;
+  color: #f5f5f5;
 }
 
 button {
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
-/* フッター */
 .app-footer {
   background-color: #5a3c73;
   color: #f5f5f5; /* 白に近い色 */
   padding: 20px 0; /* パディングを増やす */
-  margin-top: auto;
+  margin-top: auto; /* ★★★ これが重要。残りの垂直方向のスペースを吸収し、フッターを一番下に押しやる ★★★ */
   box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.15); /* 影を強調 */
   font-size: 0.9em;
   letter-spacing: 0.5px; /* 文字間隔を調整 */
